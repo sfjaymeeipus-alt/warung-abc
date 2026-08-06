@@ -12,8 +12,8 @@ $stok = $_POST['stok'];
 $exp = $_POST['tanggal_kadaluarsa'];
 $exp_sql = $exp === '' ? 'NULL' : "'$exp'";
 
-$sql = "UPDATE tbl_barang SET kode_barang='$kode', nama_barang='$nama' ";
-$sql = "harga_satuan='$harga', stok='$stok', tanggal_kadaluarsa='$exp_sql ";
+$sql = "UPDATE tbl_barang SET kode_barang='$kode', nama_barang='$nama', ";
+$sql .= "harga_satuan='$harga', stok='$stok', tanggal_kadaluarsa=$exp_sql ";
 $sql .= "WHERE id_barang = '$id' ";
 
 if (mysqli_query($koneksi, $sql)) {
@@ -28,4 +28,3 @@ if (mysqli_query($koneksi, $sql)) {
 } else {
     echo 'Gagal mengubah data: ' . mysqli_error($koneksi);
 }
-?>

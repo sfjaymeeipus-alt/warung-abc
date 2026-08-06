@@ -11,11 +11,11 @@ $stok = $_POST['stok'];
 $exp = $_POST['tanggal_kadaluarsa'];
 $exp_sql = $exp === '' ? 'NULL' : "'$exp'";
 
-$sql = "INSERT INTO tbl_barang (kode_barang, nama_barang, harga_saruan, stok, tanggal_kadaluarsa) ";
-$sql .= "VALUES ('$kode', '$nama', '$harga', '$stok', '$exp_sql)";
+$sql = "INSERT INTO tbl_barang (kode_barang, nama_barang, harga_satuan, stok, tanggal_kadaluarsa) ";
+$sql .= "VALUES ('$kode', '$nama', '$harga', '$stok', $exp_sql)";
 
 if (mysqli_query($koneksi, $sql)) {
-    $id_user =$_SESSION['id_user'];
+    $id_user = $_SESSION['id_user'];
     $waktu = date('Y-m-d H:i:s');
     $aktivitas = "tambah barang: $nama";
     $log = "INSERT INTO tbl_log (id_user, aktivitas, waktu) VALUES ('$id_user', '$aktivitas', '$waktu')";
@@ -26,4 +26,3 @@ if (mysqli_query($koneksi, $sql)) {
 } else {
     echo 'Gagal menyimpan data: ' . mysqli_error($koneksi);
 }
-?>

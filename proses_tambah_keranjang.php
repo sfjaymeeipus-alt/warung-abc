@@ -1,6 +1,6 @@
 <?php
 //proses_tambah_keranjang.php
-include 'cek_session';
+include 'cek_session.php';
 include 'config/koneksi.php';
 
 if (!isset($_SESSION['keranjang'])) {
@@ -10,7 +10,7 @@ if (!isset($_SESSION['keranjang'])) {
 $id_barang = $_POST['id_barang'];
 $jumlah = (int) $_POST['jumlah'];
 
-$sql = "SELECT * FROM tbl_barang WHERE di_barang = '$id_barang'";
+$sql = "SELECT * FROM tbl_barang WHERE id_barang = '$id_barang'";
 $hasil = mysqli_query($koneksi, $sql);
 $barang = mysqli_fetch_assoc($hasil);
 
@@ -21,12 +21,11 @@ if ($barang && $jumlah > 0 && $jumlah <= $barang['stok']) {
         'nama_barang' => $barang['nama_barang'],
         'harga' => $barang['harga_satuan'],
         'jumlah' => $jumlah,
-        'subtotal' => $subtotal, 
-    ) ;
+        'subtotal' => $subtotal,
+    );
 } else {
     $_SESSION['pesan_error'] = 'jumlah melebihi stok atau barang tidak ditemukan!';
 }
 
-header ('Location: transaksi.php');
+header('Location: transaksi.php');
 exit;
-?>

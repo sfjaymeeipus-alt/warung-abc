@@ -1,4 +1,4 @@
-<?php 
+<?php
 // data_barang.php
 include 'cek_session.php';
 include 'config/koneksi.php';
@@ -9,18 +9,25 @@ $hasil = mysqli_query($koneksi, $sql);
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Data Barang - Warung ABC</title>
-    </head>
-    <body>
-        <h1>Data Barang</h1>
-        <p><a href="dashboard.php">Kembali ke Dashboard</a> | <a href="tambah_barang.php">Tambah Barang</a></p>
-        <table border="1" cellpadding="6">
-            <tr>
-                <th>Kode</th><th>Nama Barang</th><th>Harga Satuan</th>
-                <th>Stok</th><th>Kadaluarsa</th><th>Aksi</th>
-            </tr>
-            <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
+
+<head>
+    <title>Data Barang - Warung ABC</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <h1>Data Barang</h1>
+    <p><a href="dashboard.php">Kembali ke Dashboard</a> | <a href="tambah_barang.php">Tambah Barang</a></p>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Kode</th>
+            <th>Nama Barang</th>
+            <th>Harga Satuan</th>
+            <th>Stok</th>
+            <th>Kadaluarsa</th>
+            <th>Aksi</th>
+        </tr>
+        <?php while ($row = mysqli_fetch_assoc($hasil)) { ?>
             <tr>
                 <td><?php echo $row['kode_barang']; ?></td>
                 <td><?php echo $row['nama_barang']; ?></td>
@@ -30,10 +37,11 @@ $hasil = mysqli_query($koneksi, $sql);
                 <td>
                     <a href="edit_barang.php?id=<?php echo $row['id_barang']; ?>">Edit</a> |
                     <a href="hapus_barang.php?id=<?php echo $row['id_barang']; ?>"
-                    onlick="return confrim('Yakin hapus barang ini?');">Hapus</a>
+                        onlick="return confrim('Yakin hapus barang ini?');">Hapus</a>
                 </td>
             </tr>
         <?php } ?>
-        </table>
-    </body>
+    </table>
+</body>
+
 </html>
