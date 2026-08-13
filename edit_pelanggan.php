@@ -11,6 +11,7 @@ $data = mysqli_fetch_assoc($hasil);
 <html>
     <head>
         <title>Edit Pelanggan - Warung ABC</title>
+        <link rel="stylesheet" href="assets/css/style.css">
         <body>
             <h1>Edit Pelanggan</h1>
             <form action="proses_edit_pelanggan.php" method="POST">

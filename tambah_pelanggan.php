@@ -4,6 +4,7 @@ include 'cek_session.php';?>
 <html>
     <head>
         <title>Tambah Pelanggan Warung ABC</title>
+        <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <h1>Tambah Pelanggan</h1>
     <form action="proses_tambah_pelanggan.php" method="POST">
