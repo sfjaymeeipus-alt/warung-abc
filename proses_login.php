@@ -17,7 +17,6 @@ if (mysqli_num_rows($hasil) == 1) {
         $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
         $_SESSION['role'] = $data['role'];
 
-        //catat aktivitas ke tbl_log
         $id_user = $data['id_user'];
         $waktu = date('Y-m-d H:i:s');
         $log = "INSERT INTO tbl_log (id_user, aktivitas, waktu)";
